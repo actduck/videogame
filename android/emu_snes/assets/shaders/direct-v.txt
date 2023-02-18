@@ -1,0 +1,8 @@
+in vec2 texUV;
+out vec2 texUVOut;
+
+void main()
+{
+	texUVOut = texUV;
+	gl_Position = POS;
+}

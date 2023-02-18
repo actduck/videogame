@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="4dp"
+        android:text="@string/menuItem_settings"
+
+        android:textColor="@color/green1"
+        style="@style/TextAppearance.AppCompat.Medium"
+        />
+    <TextView
+        android:id="@+id/tv_display"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:onClick="onDisplayClick"
+        android:paddingLeft="32dp"
+
+        android:text="@string/categoryDisplay_title"
+        style="@style/TextAppearance.AppCompat.Medium"
+
+        />
+    <TextView
+        android:id="@+id/tv_shaders"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:onClick="onShadersClick"
+        android:paddingLeft="32dp"
+
+        android:text="@string/categoryShaders_title"
+        style="@style/TextAppearance.AppCompat.Medium"
+
+        />
+    <TextView
+        android:id="@+id/tv_audio"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:onClick="onAudioClick"
+        android:paddingLeft="32dp"
+
+        android:text="@string/categoryAudio_title"
+        style="@style/TextAppearance.AppCompat.Medium"
+
+        />
+    <TextView
+        android:id="@+id/tv_touchscreen"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:onClick="onTouchscreenClick"
+        android:paddingLeft="32dp"
+
+        android:text="@string/categoryTouchscreen_title"
+        style="@style/TextAppearance.AppCompat.Medium"
+
+        />
+    <TextView
+        android:id="@+id/tv_input"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:onClick="onInputClick"
+        android:paddingLeft="32dp"
+
+        android:text="@string/categoryInput_title"
+        style="@style/TextAppearance.AppCompat.Medium"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="4dp"
+        android:text="@string/menuItem_profiles"
+
+        android:textColor="@color/green1"
+        style="@style/TextAppearance.AppCompat.Medium"
+        />
+
+    <TextView
+        android:id="@+id/tv_select_profiles"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:onClick="onSelectProfileClick"
+        android:paddingLeft="32dp"
+
+        android:text="@string/menuItem_select_profiles"
+        style="@style/TextAppearance.AppCompat.Medium"
+
+        />
+    <TextView
+        android:id="@+id/tv_profile_emulator"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:onClick="onProfileEmulatorClick"
+        android:paddingLeft="32dp"
+
+        android:text="@string/menuItem_emulationProfiles"
+        style="@style/TextAppearance.AppCompat.Medium"
+
+        />
+    <TextView
+        android:id="@+id/tv_profile_touchscreen"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:onClick="onProfileTouchscreenClick"
+        android:paddingLeft="32dp"
+
+        android:text="@string/menuItem_touchscreenProfiles"
+        style="@style/TextAppearance.AppCompat.Medium"
+
+        />
+    <TextView
+        android:id="@+id/tv_profile_controller"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:onClick="onProfileControllerClick"
+        android:paddingLeft="32dp"
+
+        android:text="@string/menuItem_controllerProfiles"
+        style="@style/TextAppearance.AppCompat.Medium"
+
+        />
+
+  </LinearLayout>
+</ScrollView>

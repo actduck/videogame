@@ -1,0 +1,9 @@
+[submodule "dolphin"]
+	path = dolphin
+	url = https://github.com/dolphin-emu/dolphin.git
+[submodule "MAME4droid-0.139u1-"]
+	path = MAME4droid-0.139u1-
+	url = https://github.com/seleuco/MAME4droid-0.139u1-.git
+[submodule "mupen64plus-ae"]
+	path = mupen64plus-ae
+	url = https://github.com/mupen64plus-ae/mupen64plus-ae.git

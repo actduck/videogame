@@ -1,0 +1,31 @@
+<resources>
+  <string name="app_name">Videospiel</string>
+  <string name="title_emu_mame">MAME-Plugin</string>
+  <string name="title_emu_nes">NES-Plugin</string>
+  <string name="title_emu_snes">SNES-Plugin</string>
+  <string name="title_emu_gba">GBA-Plugin</string>
+  <string name="title_emu_gbc">GBC-Plugin</string>
+  <string name="title_emu_md">MD-Plugin</string>
+  <string name="title_emu_neo">NEO-Plugin</string>
+  <string name="title_emu_dolphin">GC/Wii-Plugin</string>
+
+  <string name="storage_rationale">Speicherbedarf</string>
+  <string name="my_scanRomsDialog_selectRom">•Wie füge ich lokale Rom hinzu\? \nKopieren Sie alle ROMS-Dateien in ein Verzeichnis auf Ihrem Gerät und wählen Sie es aus. Dieses Verzeichnis darf Unterverzeichnisse haben. Nachdem der Scan abgeschlossen ist, sollten Sie Ihre Spiele sehen. \n\n •Warum werden meine Spiele nicht erkannt\? \nWenn deine Spiele komprimiert sind, versuche sie zu entpacken. Wenn dies nicht funktioniert, versuchen Sie ROMs in separate Verzeichnisse zu legen, eines für jedes System mit den folgenden Namen: %s.</string>
+  <string name="scanRomsDialog_select_file">Datei auswählen</string>
+  <string name="scanRomsDialog_select_folder">Ordner auswählen</string>
+
+  <string name="title_emu_n64">N64-Plugin</string>
+  <string name="title_emu_nds">NDS-Plugin</string>
+  <string name="title_emu_psp">PSP-Plugin</string>
+  <string name="title_emu_psx">PSX-Plugin</string>
+  <string name="title_emu_3ds">3DS-Plugin</string>
+
+  <string name="unzipping">Entpacken…</string>
+  <string name="merging">Datei wird zusammengeführt…</string>
+  <string name="game_download_start">Download startet</string>
+  <string name="game_download_pause">Download Pause</string>
+  <string name="game_download_running">Herunterladen läuft</string>
+  <string name="game_download_complete">Download abgeschlossen</string>
+  <string name="game_download_failed">Download fehlgeschlagen</string>
+  <string name="plugin_empty">Plugins sind leer!</string>
+</resources>

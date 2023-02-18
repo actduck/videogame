@@ -1,0 +1,31 @@
+<resources>
+  <string name="app_name">비디오 게임</string>
+  <string name="title_emu_mame">MAME 플러그인</string>
+  <string name="title_emu_nes">NES 플러그인</string>
+  <string name="title_emu_snes">SNES 플러그인</string>
+  <string name="title_emu_gba">GBA 플러그인</string>
+  <string name="title_emu_gbc">GBC 플러그인</string>
+  <string name="title_emu_md">MD 플러그인</string>
+  <string name="title_emu_neo">NEO 플러그인</string>
+  <string name="title_emu_dolphin">GC/Wii 플러그인</string>
+
+  <string name="storage_rationale">스토리지 필요</string>
+  <string name="my_scanRomsDialog_selectRom">• 로컬롬을 추가하려면 어떻게 합니까\?\n 모든 ROMS 파일을 디바이스의 디렉토리로 복사한 다음 선택합니다.이 디렉터리는 하위 디렉터리를 허용합니다.스캔이 완료되면 게임을 볼 수 있을 것입니다.\n\n • 왜 내 게임이 감지되지 않았습니까\?\ 게임이 압축된 경우 압축을 풀어 보십시오.이것이 작동하지 않을 경우 ROM을 별도의 디렉토리에 넣으십시오. 각 시스템의 디렉토리는 다음과 같습니다. %s.</string>
+  <string name="scanRomsDialog_select_file">파일 선택</string>
+  <string name="scanRomsDialog_select_folder">폴더 선택</string>
+
+  <string name="title_emu_n64">N64 플러그인</string>
+  <string name="title_emu_nds">NDS 플러그인</string>
+  <string name="title_emu_psp">PSP 플러그인</string>
+  <string name="title_emu_psx">PSX 플러그인</string>
+  <string name="title_emu_3ds">3DS 플러그인</string>
+
+  <string name="unzipping">압축 푸는 중…</string>
+  <string name="merging">파일 병합 중…</string>
+  <string name="game_download_start">다운로드 시작</string>
+  <string name="game_download_pause">다운로드 일시 중지</string>
+  <string name="game_download_running">다운로드 실행 중</string>
+  <string name="game_download_complete">다운로드 완료</string>
+  <string name="game_download_failed">다운로드 실패</string>
+  <string name="plugin_empty">플러그인이 비어 있습니다!</string>
+</resources>

@@ -1,0 +1,32 @@
+<resources>
+  <string name="app_name">Video Game</string>
+  <string name="title_emu_mame">MAME Plugin</string>
+  <string name="title_emu_nes">NES Plugin</string>
+  <string name="title_emu_snes">SNES Plugin</string>
+  <string name="title_emu_gba">GBA Plugin</string>
+  <string name="title_emu_gbc">GBC Plugin</string>
+  <string name="title_emu_md">MD Plugin</string>
+  <string name="title_emu_neo">NEO Plugin</string>
+  <string name="title_emu_swan">SWAN Plugin</string>
+  <string name="title_emu_dolphin">GC/Wii Plugin</string>
+
+  <string name="storage_rationale">Need Storage</string>
+  <string name="my_scanRomsDialog_selectRom">•How do I add local rom?\nCopy all your ROMS files into a directory on your device and select it. This directory is allowed to have subdirectories. After the scan completes you should see your games.\n\n •Why aren\'t my games detected?\nIf your games are compressed, try uncompressing them. If this doesn\'t work try putting ROMs into separate directories, one for each system with the following names: %s.</string>
+  <string name="scanRomsDialog_select_file">Select File</string>
+  <string name="scanRomsDialog_select_folder">Select Folder</string>
+
+  <string name="title_emu_n64">N64 Plugin</string>
+  <string name="title_emu_nds">NDS Plugin</string>
+  <string name="title_emu_psp">PSP Plugin</string>
+  <string name="title_emu_psx">PSX Plugin</string>
+  <string name="title_emu_3ds">3DS Plugin</string>
+
+  <string name="unzipping">Unzipping…</string>
+  <string name="merging">Merging File…</string>
+  <string name="game_download_start">Download Starting</string>
+  <string name="game_download_pause">Download Pause</string>
+  <string name="game_download_running">Download Running</string>
+  <string name="game_download_complete">Download Complete</string>
+  <string name="game_download_failed">Download Failed</string>
+  <string name="plugin_empty">Plugins is empty!</string>
+</resources>

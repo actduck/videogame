@@ -1,0 +1,31 @@
+<resources>
+  <string name="app_name">Videojuegos</string>
+  <string name="title_emu_mame">Complemento MAME</string>
+  <string name="title_emu_nes">Complemento NES</string>
+  <string name="title_emu_snes">Complemento SNES</string>
+  <string name="title_emu_gba">Complemento GBA</string>
+  <string name="title_emu_gbc">Complemento GBC</string>
+  <string name="title_emu_md">Complemento MD</string>
+  <string name="title_emu_neo">Complemento NEO</string>
+  <string name="title_emu_dolphin">Complemento GC/Wii</string>
+
+  <string name="storage_rationale">Requiere almacenamiento</string>
+  <string name="my_scanRomsDialog_selectRom">¿• Cómo añadir ROM local\? N copiar todos los archivos ROMs a un directorio en el dispositivo y seleccionarlo. Este directorio permite subdirectorios. Después de completar el escaneo, usted debe ser capaz de ver su juego. ¿Por qué no se detectó mi juego\? Si el juego está comprimido, intente descomprimirlo. Si esto no funciona, intente colocar ROM en un directorio separado, un directorio para cada sistema, con el siguiente nombre: %s.</string>
+  <string name="scanRomsDialog_select_file">Seleccionar archivo</string>
+  <string name="scanRomsDialog_select_folder">Seleccionar carpeta</string>
+
+  <string name="title_emu_n64">Complemento N64</string>
+  <string name="title_emu_nds">Complemento NDS</string>
+  <string name="title_emu_psp">Complemento PSP</string>
+  <string name="title_emu_psx">Complemento PSX</string>
+  <string name="title_emu_3ds">Complemento 3DS</string>
+
+  <string name="unzipping">Descomprimiendo…</string>
+  <string name="merging">Fusionar archivos…</string>
+  <string name="game_download_start">Inicio de la descarga</string>
+  <string name="game_download_pause">Pausa de descarga</string>
+  <string name="game_download_running">La descarga se está ejecutando</string>
+  <string name="game_download_complete">Descarga completa</string>
+  <string name="game_download_failed">Falló la descarga</string>
+  <string name="plugin_empty">¡El plug - in está vacío!</string>
+</resources>

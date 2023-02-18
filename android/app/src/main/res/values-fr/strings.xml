@@ -1,0 +1,31 @@
+<resources>
+  <string name="app_name">Jeux vidéo</string>
+  <string name="title_emu_mame">Plug-in MAME</string>
+  <string name="title_emu_nes">Plug-in NES</string>
+  <string name="title_emu_snes">Plug-in SNES</string>
+  <string name="title_emu_gba">Plug-in GBA</string>
+  <string name="title_emu_gbc">Plug-in GBC</string>
+  <string name="title_emu_md">Plug-in MD</string>
+  <string name="title_emu_neo">Plug-in NEO</string>
+  <string name="title_emu_dolphin">Plug-in GC/Wii</string>
+
+  <string name="storage_rationale">Stockage requis</string>
+  <string name="my_scanRomsDialog_selectRom">• Comment ajouter un Rom local\? N copiez tous les fichiers rom dans un répertoire sur l\'appareil et sélectionnez - le. Ce répertoire permet des sous - répertoires. Une fois le scan terminé, vous devriez voir votre jeu. Pourquoi mon jeu n\'a - t - il pas été détecté\? Si le jeu est compressé, essayez de décompresser. Si cela ne fonctionne pas, essayez de placer le rom dans un répertoire s éparé, un par système, avec le nom suivant: %s.</string>
+  <string name="scanRomsDialog_select_file">Sélectionner un fichier</string>
+  <string name="scanRomsDialog_select_folder">Sélectionner le dossier</string>
+
+  <string name="title_emu_n64">Plug-in N64</string>
+  <string name="title_emu_nds">Plug-in NDSName</string>
+  <string name="title_emu_psp">Plug-in PSP</string>
+  <string name="title_emu_psx">Plug-in PSX</string>
+  <string name="title_emu_3ds">Plug-in 3DS</string>
+
+  <string name="unzipping">Décompression…</string>
+  <string name="merging">Fusion de fichiers…</string>
+  <string name="game_download_start">Début du téléchargement</string>
+  <string name="game_download_pause">Téléchargement en pause</string>
+  <string name="game_download_running">Téléchargement en cours</string>
+  <string name="game_download_complete">Téléchargement terminé</string>
+  <string name="game_download_failed">Le téléchargement a échoué</string>
+  <string name="plugin_empty">Le plug - in est vide!</string>
+</resources>

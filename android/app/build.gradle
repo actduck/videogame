@@ -1,0 +1,507 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+  localPropertiesFile.withReader('UTF-8') { reader ->
+    localProperties.load(reader)
+  }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+  throw new GradleException(
+      "Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+  flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+  flutterVersionName = '1.0'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply plugin: 'com.google.gms.google-services' // Google Play services Gradle plugin
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+  keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+  compileSdkVersion 33
+
+  sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+  }
+
+  defaultConfig {
+    applicationId "com.actduck.videogame"
+    minSdk 23
+    targetSdkVersion 33
+    versionCode flutterVersionCode.toInteger()
+    versionName flutterVersionName
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    multiDexEnabled true
+    //    resConfigs "en"
+    //    setProperty("archivesBaseName", "VideoGame-$versionName")
+    ndk {
+      abiFilters 'armeabi-v7a', 'arm64-v8a'
+      debugSymbolLevel 'FULL'
+    }
+  }
+
+  kotlinOptions {
+    jvmTarget = '1.8'
+    freeCompilerArgs += [
+        '-Xjvm-default=enable'
+    ]
+  }
+  buildFeatures {
+    viewBinding true
+  }
+
+  signingConfigs {
+    release {
+      keyAlias keystoreProperties['keyAlias']
+      keyPassword keystoreProperties['keyPassword']
+      storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+      storePassword keystoreProperties['storePassword']
+    }
+  }
+
+  buildTypes {
+    debug {
+      minifyEnabled false
+
+      signingConfig signingConfigs.release
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard.cfg'
+      manifestPlaceholders = [ADMOB_APP_ID: "ca-app-pub-3940256099942544~3347511713"]
+      ndk {
+        abiFilters "arm64-v8a", "x86_64", "armeabi-v7a", "x86"
+        debugSymbolLevel 'FULL'
+      }
+    }
+    profile {
+      minifyEnabled true
+
+      signingConfig signingConfigs.release
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard.cfg'
+      manifestPlaceholders = [ADMOB_APP_ID: "ca-app-pub-3940256099942544~3347511713"]
+    }
+    release {
+      // TODO: Add your own signing config for the release build.
+      // Signing with the debug keys for now, so `flutter run --release` works.
+      minifyEnabled true
+
+      signingConfig signingConfigs.release
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard.cfg'
+      manifestPlaceholders = [ADMOB_APP_ID: "ca-app-pub-7745420115768492~2893795103"]
+      // Add this extension
+      firebaseCrashlytics {
+        // Enable processing and uploading of native symbols to Crashlytics servers.
+        // By default, this is disabled to improve build speeds.
+        // This flag must be enabled to see properly-symbolicated native
+        // stack traces in the Crashlytics dashboard.
+        nativeSymbolUploadEnabled true
+        unstrippedNativeLibsDir 'src/main/jniLibs'
+      }
+    }
+  }
+  packagingOptions {
+    jniLibs {
+      keepDebugSymbols +=
+          ['*/armeabi/*.so', '*/armeabi-v7a/*.so', '*/x86/*.so', '*/x86_64/*.so', '*/*/*_libretro_android.so']
+      pickFirsts +=
+          ['**/arm64-v8a/libjnidispatch.so', '**/armeabi-v7a/libjnidispatch.so', '**/x86/libjnidispatch.so', '**/x86_64/libjnidispatch.so']
+    }
+    resources {
+      excludes +=
+          ['META-INF/AL2.0', 'META-INF/LGPL2.1', 'META-INF/beans.xml', 'META-INF/DEPENDENCIES']
+    }
+  }
+
+  compileOptions {
+    sourceCompatibility 1.8
+    targetCompatibility 1.8
+  }
+  ndkVersion '25.1.8937393'
+  dynamicFeatures =
+      [':emu_mame', ':emu_nes', ':emu_snes', ':emu_gba', ':emu_gbc', ':emu_md', ':emu_swan', ':emu_neo', ':emu_dolphin', ':emu_n64', ':emu_nds', ':emu_psp', ':emu_psx', ':emu_3ds']
+  lint {
+    abortOnError false
+    checkReleaseBuilds false
+    disable 'InvalidPackage'
+  }
+  namespace 'com.actduck.videogame'
+}
+
+flutter {
+  source '../..'
+}
+
+dependencies {
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+  implementation 'androidx.appcompat:appcompat:1.5.1'
+  implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+  implementation project(path: ':imagine-v9')
+  implementation "com.actduck:emu-dolphin:1.0.5" // 2022-10-18 升级到最新版
+  implementation "com.actduck:emu-n64:1.0.7" // 2022-11-10
+  implementation "com.actduck:emu-mame:1.0.4" // 2022-5-14
+  implementation "com.actduck:emu-nds:1.0.3" // 2022-10-7
+  implementation "com.actduck:emu-nds-masterswitch:1.0.3" // 2022-10-7
+  implementation "com.actduck:emu-lem-app:1.0.1" // 2022-10-05
+  implementation "com.actduck:emu-lem-ext-play:1.0.1" // 2022-10-05
+  implementation "com.actduck:emu-lem-libretro-db:1.0.1" // 2022-10-05
+  implementation "com.actduck:emu-lem-retrograde-app-shared:1.0.1" // 2022-10-05
+  implementation "com.actduck:emu-lem-retrograde-util:1.0.1" // 2022-10-05
+  implementation "com.actduck:emu-lem-touchinput:1.0.1" // 2022-10-05
+
+  implementation 'androidx.multidex:multidex:2.0.1'
+  implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+  implementation 'com.google.android.gms:play-services-auth:20.4.0'
+  implementation "com.google.code.gson:gson:2.9.1"
+  implementation 'com.google.android.gms:play-services-games:23.1.0'
+
+  // App dependencies
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+  implementation "com.jakewharton.timber:timber:5.0.1"
+  implementation "androidx.room:room-ktx:2.4.3"
+  //  implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+  //  implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+  kapt "androidx.room:room-compiler:2.4.3"
+  // https://mvnrepository.com/artifact/com.google.firebase/firebase-analytics-ktx
+  implementation group: 'com.google.firebase', name: 'firebase-analytics-ktx', version: '21.2.0'
+  implementation 'androidx.work:work-runtime-ktx:2.7.1'
+
+  // HILT
+  implementation "androidx.hilt:hilt-work:1.0.0"
+  implementation "com.google.dagger:hilt-android:2.44"
+  kapt "com.google.dagger:hilt-compiler:2.44"
+
+  //  implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
+  kapt 'androidx.hilt:hilt-compiler:1.0.0'
+  annotationProcessor 'androidx.hilt:hilt-compiler:1.0.0'
+  implementation "androidx.activity:activity-ktx:1.6.1"
+
+  // Architecture Components
+  implementation 'androidx.fragment:fragment-ktx:1.5.3'
+  //    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+  //    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+  implementation("org.greenrobot:eventbus:3.3.1")
+
+  // define any required OkHttp artifacts without version
+  implementation 'com.squareup.retrofit2:retrofit:2.9.0' // 必要依赖，retrofit
+  implementation 'com.squareup.retrofit2:converter-gson:2.9.0' // 必要依赖，解析json字符
+  implementation("com.squareup.okhttp3:okhttp:4.10.0")
+  implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+
+  // Play 应用更新
+  implementation 'com.google.android.play:app-update:2.0.1'
+  implementation 'com.google.android.play:app-update-ktx:2.0.1'
+
+  // easy permissions For developers using AndroidX in their applications
+  implementation 'pub.devrel:easypermissions:3.0.0'
+  // 文件存储
+  implementation "com.anggrayudi:storage:1.1.0"
+  implementation 'com.afollestad.material-dialogs:input:3.3.0'
+
+  // 广告中介
+  implementation 'com.google.ads.mediation:applovin:11.6.0.0'
+  implementation 'com.unity3d.ads:unity-ads:4.4.1'
+  implementation 'com.google.ads.mediation:unity:4.4.1.0'
+
+  // 欧盟用户消息平台的同意
+  implementation 'com.google.android.ump:user-messaging-platform:2.0.0'
+  // ————————————————————————————————————dolphin 的依赖START
+  coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+
+  implementation 'androidx.appcompat:appcompat:1.5.0'
+  implementation 'androidx.exifinterface:exifinterface:1.3.3'
+  implementation 'androidx.cardview:cardview:1.0.0'
+  implementation 'androidx.recyclerview:recyclerview:1.2.1'
+  implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+  implementation 'androidx.lifecycle:lifecycle-viewmodel:2.5.1'
+  implementation 'androidx.fragment:fragment:1.5.2'
+  implementation 'androidx.slidingpanelayout:slidingpanelayout:1.2.0'
+  implementation 'com.google.android.material:material:1.6.1'
+  implementation 'androidx.core:core-splashscreen:1.0.0'
+
+  // Android TV UI libraries.
+  implementation 'androidx.leanback:leanback:1.0.0'
+  implementation 'androidx.tvprovider:tvprovider:1.0.0'
+
+  // For REST calls
+  implementation 'com.android.volley:volley:1.2.1'
+
+  // For loading game covers from disk and GameTDB
+  implementation 'com.github.bumptech.glide:glide:4.13.1'
+
+  implementation 'com.nononsenseapps:filepicker:4.2.1'
+  // ————————————————————————————————————dolphin 的依赖END
+
+  // ————————————————————————————————————n64 的依赖START
+  implementation 'androidx.preference:preference:1.2.0'
+  implementation 'androidx.tvprovider:tvprovider:1.0.0'
+  implementation 'androidx.multidex:multidex:2.0.1'
+  implementation 'androidx.documentfile:documentfile:1.0.1'
+  implementation 'com.google.android.material:material:1.6.0'
+  implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+
+  def lifecycle_version = "2.4.1"
+
+  // ViewModel
+  implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+  implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
+  // LiveData
+  implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
+  // Lifecycles only (without ViewModel or LiveData)
+  implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+
+  // Saved state module for ViewModel
+  implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+
+  // alternately - if using Java8, use the following instead of lifecycle-compiler
+  implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+
+  // optional - helpers for implementing LifecycleOwner in a Service
+  implementation "androidx.lifecycle:lifecycle-service:$lifecycle_version"
+
+  // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
+  implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
+
+  // optional - ReactiveStreams support for LiveData
+  implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version"
+
+  implementation 'org.apache.commons:commons-lang3:3.12.0'
+  implementation 'org.apache.commons:commons-text:1.9'
+  implementation 'org.apache.commons:commons-io:1.3.2'
+  implementation 'org.apache.commons:commons-compress:1.21'
+  implementation 'org.tukaani:xz:1.9'
+
+  implementation('net.java.dev.jna:jna-platform:5.11.0') {
+    exclude group: 'net.java.dev.jna', module: 'jna'
+  }
+  implementation 'net.java.dev.jna:jna:5.11.0@aar'
+  // ————————————————————————————————————n64 的依赖END
+
+  // ————————————————————————————————————nds 的依赖START
+
+  // AndroidX
+
+  implementation(AndroidX.activity)
+  implementation(AndroidX.activityCompose)
+  implementation(AndroidX.appCompat)
+  implementation(AndroidX.cardView)
+  implementation(AndroidX.constraintLayout)
+  implementation(AndroidX.core)
+  implementation(AndroidX.documentFile)
+  implementation(AndroidX.fragment)
+  implementation(AndroidX.hiltWork)
+  implementation(AndroidX.lifecycleExtensions)
+  implementation(AndroidX.lifecycleViewModel)
+  implementation(AndroidX.preference)
+  implementation(AndroidX.recyclerView)
+  implementation(AndroidX.room)
+  implementation(AndroidX.roomRxJava)
+  implementation(AndroidX.splashscreen)
+  implementation(AndroidX.swipeRefreshLayout)
+  implementation(AndroidX.work)
+  implementation(AndroidX.workRxJava)
+  implementation(AndroidX.material)
+
+  // Third-party
+
+  //  implementation(ThirdParty.project(masterSwitchPreference))
+  implementation(ThirdParty.flexbox)
+  implementation(ThirdParty.gson)
+  implementation(ThirdParty.hilt)
+  implementation(ThirdParty.kotlinxCoroutinesRx)
+  implementation(ThirdParty.picasso)
+  implementation(ThirdParty.markwon)
+  implementation(ThirdParty.markwonImagePicasso)
+  implementation(ThirdParty.markwonLinkify)
+  implementation(ThirdParty.rxJava)
+  implementation(ThirdParty.rxJavaAndroid)
+  implementation(ThirdParty.commonsCompress)
+  implementation(ThirdParty.xz)
+
+  implementation(Compose.foundation)
+  implementation(Compose.material)
+  implementation(Compose.ui)
+  implementation(Compose.uiToolingPreview)
+
+  debugImplementation(Compose.uiTooling)
+
+
+  // GitHub
+
+  //  gitHubImplementation(GitHub.retrofit)
+  //  gitHubImplementation(GitHub.retrofitAdapterRxJava)
+  //  gitHubImplementation(GitHub.retrofitConverterGson)
+
+  // KAPT
+  kapt(Kapt.hiltCompiler)
+  kapt(Kapt.hiltCompilerAndroid)
+  kapt(Kapt.roomCompiler)
+
+  implementation 'androidx.core:core-ktx:1.8.0'
+  implementation 'androidx.appcompat:appcompat:1.5.0'
+  implementation 'androidx.preference:preference:1.2.0'
+  // ————————————————————————————————————nds 的依赖END
+
+  // ————————————————————————————————————lem 的依赖START
+
+  // App
+  implementation(Navigation.navigationFragment)
+  implementation(Navigation.navigationUi)
+  implementation(Libs.material)
+  implementation(Libs.coil)
+  implementation(Appcompat.constraintLayout)
+  implementation(Activity.activity)
+  implementation(Activity.activityKtx)
+  implementation(Appcompat.appcompat)
+  implementation(Preferences.preferencesKtx)
+  implementation(Work.runtime)
+  implementation(Work.runtimeKtx)
+  implementation(Lifecycle.commonJava8)
+  implementation(Lifecycle.reactiveStreams)
+  implementation(Epoxy.expoxy)
+  implementation(Epoxy.paging)
+
+  kapt(Epoxy.processor)
+  kapt(Lifecycle.processor)
+
+  implementation(Leanback.leanback)
+  implementation(Leanback.leanbackPreference)
+  implementation(Leanback.leanbackPaging)
+
+  implementation(Appcompat.recyclerView)
+  implementation(Paging.common)
+  implementation(Paging.runtime)
+  implementation(Room.common)
+  implementation(Room.runtime)
+  implementation(Room.rxjava2)
+  implementation(Room.ktx)
+  //    implementation(libs.dagger.android.core)
+  //    implementation(libs.dagger.android.support)
+  //    implementation(libs.dagger.core)
+  implementation(Libs.kotlinxCoroutinesAndroid)
+  implementation(Libs.kotlinxCoroutinesRxJava2)
+  implementation(Libs.okHttp3)
+  implementation(Libs.okio)
+  implementation(Libs.retrofit)
+  implementation(Libs.retrofitRxJava2)
+  implementation(Libs.rxAndroid2)
+  implementation(Libs.rxJava2)
+  implementation(Libs.flowPreferences)
+  implementation(Libs.guava)
+  implementation(AndroidX.documentFile)
+  implementation(Leanback.tvProvider)
+  implementation(Libs.harmony)
+  implementation(Libs.startup)
+  implementation(Kotlin.serialization)
+  implementation(Kotlin.serializationJson)
+
+  implementation(Libs.libretrodroid)
+
+  // play
+  implementation(Libs.retrofit)
+  implementation(Libs.retrofitRxJava2)
+  implementation(Play.featureDelivery)
+  implementation(Play.featureDeliveryKtx)
+  implementation(Play.review)
+  implementation(Play.reviewKtx)
+  implementation(Libs.rxJava2)
+
+  implementation(Gdrive.apiClient)
+  implementation(Gdrive.apiClientAndroid)
+  implementation(Gdrive.apiServicesDrive)
+  implementation(Play.playServices)
+  implementation(Play.coroutine)
+  implementation(Lifecycle.commonJava8)
+  kapt(Lifecycle.processor)
+
+  implementation(Leanback.leanback)
+  implementation(Appcompat.constraintLayout)
+  implementation(Libs.material)
+
+  //  implementation(deps.libs.dagger.core)
+
+  implementation(Libs.kotlinxCoroutinesAndroid)
+
+  //  db
+  implementation(Room.runtime)
+  implementation(Room.rxjava2)
+  implementation(Room.ktx)
+  //  implementation(deps.libs.dagger.core)
+  implementation(Libs.kotlinxCoroutinesAndroid)
+  implementation(Libs.rxJava2)
+
+  kapt(Room.compiler)
+  //  kapt(deps.libs.dagger.compiler)
+
+  // touch
+  implementation(Libs.rxJava2)
+  implementation(Libs.rxAndroid2)
+  implementation(Appcompat.constraintLayout)
+  implementation(Appcompat.appcompat)
+  implementation(Lifecycle.commonJava8)
+  implementation(Libs.material)
+  implementation(Preferences.preferencesKtx)
+
+  api(Libs.radialgamepad)
+
+  //  implementation(kotlin(deps.libs.kotlin.stdlib))
+
+  kapt(Lifecycle.processor)
+  // shared
+  api(Lifecycle.commonJava8)
+
+  implementation(Work.runtime)
+  implementation(Work.runtimeKtx)
+  implementation(Appcompat.appcompat)
+  implementation(Leanback.leanbackPreference)
+  implementation(Ktx.collection)
+  implementation(Ktx.core)
+  implementation(Ktx.coreKtx)
+  implementation(Fragment.fragment)
+  implementation(Fragment.ktx)
+  implementation(Activity.activity)
+  implementation(Activity.activityKtx)
+  implementation(Ktx.coreKtx)
+  implementation(Paging.common)
+  implementation(Paging.runtime)
+  implementation(Room.runtime)
+  implementation(Room.rxjava2)
+  implementation(Room.ktx)
+  implementation(Room.paging)
+  implementation(AndroidX.documentFile)
+  //    implementation(deps.libs.dagger.android.core)
+  //    implementation(deps.libs.dagger.android.support)
+  implementation(Libs.okHttp3)
+  implementation(Libs.okio)
+  implementation(Libs.retrofit)
+  implementation(Libs.retrofitRxJava2)
+  implementation(Libs.rxJava2)
+  implementation(Kotlin.serialization)
+  implementation(Kotlin.serializationJson)
+  implementation(Libs.harmony)
+  implementation(Libs.multitouchGestures)
+  implementation(Libs.material)
+  implementation(Libs.kotlinxCoroutinesAndroid)
+
+  kapt(Room.compiler)
+
+  // ————————————————————————————————————lem 的依赖END
+}

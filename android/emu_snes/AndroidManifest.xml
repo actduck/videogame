@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:dist="http://schemas.android.com/apk/distribution"
+		package="com.explusalpha.Snes9xPlus"
+		android:installLocation="auto"
+		android:versionCode="15010551"
+		android:versionName="1.5.53">
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
+	<uses-permission android:name="android.permission.BLUETOOTH" />
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+	<uses-feature android:name="android.hardware.bluetooth" android:required="false" />
+	<uses-feature android:name="android.hardware.gamepad" android:required="false" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+	<supports-screens android:largeScreens="true" android:xlargeScreens="true" />
+	<uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+<application android:label="@string/app_name" android:isGame="true" android:requestLegacyExternalStorage="true" android:hasCode="false">
+		<activity android:name="com.actduck.videogame.emu.SNESActivity"
+				android:label="@string/app_name"
+				android:theme="@style/AppTheme"
+				android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|orientation|uiMode|screenSize|smallestScreenSize"
+				android:process=":emu"
+				android:exported="true"
+				android:launchMode="singleInstance">
+<!--			<intent-filter>-->
+<!--				<action android:name="android.intent.action.MAIN" />-->
+<!--				<category android:name="android.intent.category.LAUNCHER" />-->
+<!--				<category android:name="android.intent.category.LEANBACK_LAUNCHER" />-->
+<!--				<category android:name="tv.ouya.intent.category.GAME" />-->
+<!--			</intent-filter>-->
+
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+<!--				<data android:mimeType="application/zip"/>-->
+				<data android:mimeType="application/snes"/>
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="file" />
+				<data android:mimeType="*/*" />
+				<data android:host="*" />
+				<data android:pathPattern=".*\\.smc" />
+				<data android:pathPattern=".*\\.sfc" />
+			</intent-filter>
+			<meta-data android:name="android.app.lib_name" android:value="snes" />
+
+		</activity>
+<!--		<meta-data android:name="xperiaplayoptimized_content" android:resource="@drawable/iconbig" />-->
+<!--		<meta-data android:name="game_icon" android:resource="@drawable/iconbig" />-->
+	</application>
+
+	<dist:module
+			dist:instant="false"
+			dist:title="@string/title_emu_snes">
+		<dist:delivery>
+			<dist:on-demand />
+		</dist:delivery>
+		<dist:fusing dist:include="true" />
+	</dist:module>
+</manifest>

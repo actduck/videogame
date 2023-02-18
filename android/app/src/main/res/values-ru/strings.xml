@@ -1,0 +1,31 @@
+<resources>
+  <string name="app_name">Компьютерные игры</string>
+  <string name="title_emu_mame">Плагин MAME</string>
+  <string name="title_emu_nes">Плагин NES</string>
+  <string name="title_emu_snes">Плагин SNES</string>
+  <string name="title_emu_gba">Плагин GBA</string>
+  <string name="title_emu_gbc">Плагин GBC</string>
+  <string name="title_emu_md">Плагин МD</string>
+  <string name="title_emu_neo">Плагин NЕО</string>
+  <string name="title_emu_dolphin">Плагин GC/Wii</string>
+
+  <string name="storage_rationale">потребность в памяти</string>
+  <string name="my_scanRomsDialog_selectRom">• как добавить локальный rom\? N скопировать все файлы ROMS в каталог устройства и выбрать их. этот каталог позволяет иметь вложенные каталоги. Сканирование завершено после того, как вы увидите игру. Почему не нашли мою игру\? Если игра была сжата, попробуйте распаковать её. если это не сработает, попробуйте поместить ROM в отдельную папку, содержащую следующую информацию по каждой системе:</string>
+  <string name="scanRomsDialog_select_file">Выбор файла</string>
+  <string name="scanRomsDialog_select_folder">Выбор папки</string>
+
+  <string name="title_emu_n64">Плагин N64</string>
+  <string name="title_emu_nds">Плагин NDS</string>
+  <string name="title_emu_psp">Плагин PSP</string>
+  <string name="title_emu_psx">Плагин PSX</string>
+  <string name="title_emu_3ds">Плагин 3DS</string>
+
+  <string name="unzipping">распаковка…</string>
+  <string name="merging">объединить файл…</string>
+  <string name="game_download_start">начало загрузки</string>
+  <string name="game_download_pause">Загрузка приостановлена</string>
+  <string name="game_download_running">Загрузка выполняется</string>
+  <string name="game_download_complete">Загрузка завершена</string>
+  <string name="game_download_failed">Ошибка загрузки</string>
+  <string name="plugin_empty">модуль пустой!</string>
+</resources>

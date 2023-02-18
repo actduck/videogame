@@ -1,0 +1,31 @@
+<resources>
+  <string name="app_name">Jogo de Vídeo</string>
+  <string name="title_emu_mame">Plug-in MAME</string>
+  <string name="title_emu_nes">Plug-in NES</string>
+  <string name="title_emu_snes">Plug-in SNES</string>
+  <string name="title_emu_gba">Plug-in GBA</string>
+  <string name="title_emu_gbc">Plug-in GBC</string>
+  <string name="title_emu_md">Plug-in MD</string>
+  <string name="title_emu_neo">Plug-in NEO</string>
+  <string name="title_emu_dolphin">Plug-in GC/Wii</string>
+
+  <string name="storage_rationale">Necessidade de Armazenamento</string>
+  <string name="my_scanRomsDialog_selectRom">• Como faço para adicionar rom local\? \nCopie todos os seus arquivos ROMS em um diretório no seu dispositivo e selecione-o. Este diretório tem permissão para ter subdiretórios. Depois que a verificação for concluída, você deve ver seus jogos. \n\n •Por que meus jogos não são detectados\? \nSe seus jogos estiverem compactados, tente descompactá-los. Se isso não funcionar, tente colocar ROMs em diretórios separados, um para cada sistema com os seguintes nomes: %s.</string>
+  <string name="scanRomsDialog_select_file">Seleccionar o Ficheiro</string>
+  <string name="scanRomsDialog_select_folder">Seleccionar a Pasta</string>
+
+  <string name="title_emu_n64">Plug-in N64</string>
+  <string name="title_emu_nds">Plug-in NDS</string>
+  <string name="title_emu_psp">Plug-in PSP</string>
+  <string name="title_emu_psx">Plug-in PSX</string>
+  <string name="title_emu_3ds">Plug-in 3DS</string>
+
+  <string name="unzipping">A abrir o fecho…</string>
+  <string name="merging">Juntar o Ficheiro…</string>
+  <string name="game_download_start">Transferir Iniciar</string>
+  <string name="game_download_pause">Descarregar Pausa</string>
+  <string name="game_download_running">Transferir em Execução</string>
+  <string name="game_download_complete">Transferir Completo</string>
+  <string name="game_download_failed">A transferência falhou</string>
+  <string name="plugin_empty">Os \'plugins\' estão vazios!</string>
+</resources>

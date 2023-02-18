@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>316309652772-t8a8s3ki64f68ir85pq43o7tc7spehqh.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.316309652772-t8a8s3ki64f68ir85pq43o7tc7spehqh</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>316309652772-upch4arl3bsu78r7uuaci082gf7f08g9.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyACWabKP4TtW0dC1qgfl6MAEHmTpfP2OmQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>316309652772</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.actduck.videogame</string>
+	<key>PROJECT_ID</key>
+	<string>duck-games</string>
+	<key>STORAGE_BUCKET</key>
+	<string>duck-games.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:316309652772:ios:10d70ac2411e21a0571fb1</string>
+	<key>DATABASE_URL</key>
+	<string>https://duck-games.firebaseio.com</string>
+</dict>
+</plist>

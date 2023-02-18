@@ -1,0 +1,11 @@
+uniform vec2 srcPixels;
+in vec2 texUV;
+out vec2 texUVOut;
+out vec2 texelPosOut;
+
+void main()
+{
+	texUVOut = texUV;
+	texelPosOut = texUV * srcPixels;
+	gl_Position = POS;
+}

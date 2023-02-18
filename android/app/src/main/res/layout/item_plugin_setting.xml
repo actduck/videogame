@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:gravity="center_vertical"
+    >
+<!--  <ImageView-->
+<!--      android:padding="4dp"-->
+<!--      android:id="@+id/ic_plugin_installed"-->
+<!--      android:layout_width="24dp"-->
+<!--      android:src="@drawable/ic_download_completed"-->
+<!--      android:layout_height="24dp"/>-->
+  <ImageView
+      android:id="@+id/iv_plugin_pic"
+      android:layout_width="36dp"
+      tools:src="@drawable/game_system_psp"
+      android:layout_height="36dp"/>
+
+  <TextView
+      android:id="@+id/tv_plugin_name"
+      android:layout_width="0dp"
+      android:layout_weight="1"
+      android:layout_height="56dp"
+      android:background="?selectableItemBackground"
+      android:gravity="center_vertical"
+      android:paddingStart="16dp"
+      android:paddingEnd="16dp"
+      tools:text="PSP"
+      style="@style/TextAppearance.AppCompat.Medium"
+      />
+
+  <ImageView
+      android:background="?attr/selectableItemBackgroundBorderless"
+      android:padding="4dp"
+      android:id="@+id/iv_plugin_add"
+      android:layout_width="32dp"
+      android:src="@drawable/ic_editor_ob_add"
+      android:layout_height="32dp"/>
+  <ImageView
+      android:background="?attr/selectableItemBackgroundBorderless"
+      android:padding="4dp"
+      android:id="@+id/iv_plugin_remove"
+      android:layout_width="32dp"
+      android:src="@drawable/ic_editor_listened_delete"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_height="32dp"/>
+  <ImageView
+      android:background="?attr/selectableItemBackgroundBorderless"
+      android:padding="4dp"
+      android:id="@+id/iv_plugin_setting"
+      android:layout_width="32dp"
+      android:src="@drawable/biligame_mine_center_setup"
+      android:layout_height="32dp"/>
+</LinearLayout>

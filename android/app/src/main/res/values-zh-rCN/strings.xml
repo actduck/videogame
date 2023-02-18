@@ -1,0 +1,31 @@
+<resources>
+  <string name="app_name">电子游戏</string>
+  <string name="title_emu_mame">MAME插件</string>
+  <string name="title_emu_nes">NES插件</string>
+  <string name="title_emu_snes">SNES插件</string>
+  <string name="title_emu_gba">GBA插件</string>
+  <string name="title_emu_gbc">GBC插件</string>
+  <string name="title_emu_md">MD插件</string>
+  <string name="title_emu_neo">NEO插件</string>
+  <string name="title_emu_dolphin">GC/Wii插件</string>
+
+  <string name="storage_rationale">需要存储</string>
+  <string name="my_scanRomsDialog_selectRom">•如何添加本地rom？\n将所有ROMS文件复制到设备上的一个目录中，然后选择它。此目录允许有子目录。扫描完成后，您应该可以看到您的游戏。\n\n•为什么没有检测到我的游戏？\如果游戏已压缩，请尝试解压缩。如果这不起作用，请尝试将ROM放在单独的目录中，每个系统一个目录，名称如下：%s。</string>
+  <string name="scanRomsDialog_select_file">选择文件</string>
+  <string name="scanRomsDialog_select_folder">选择文件夹</string>
+
+  <string name="title_emu_n64">N64插件</string>
+  <string name="title_emu_nds">NDS插件</string>
+  <string name="title_emu_psp">PSP插件</string>
+  <string name="title_emu_psx">PSX插件</string>
+  <string name="title_emu_3ds">3DS插件</string>
+
+  <string name="unzipping">正在解压缩…</string>
+  <string name="merging">正在合并文件…</string>
+  <string name="game_download_start">下载开始</string>
+  <string name="game_download_pause">下载暂停</string>
+  <string name="game_download_running">下载正在运行</string>
+  <string name="game_download_complete">下载完成</string>
+  <string name="game_download_failed">下载失败</string>
+  <string name="plugin_empty">插件为空！</string>
+</resources>

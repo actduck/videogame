@@ -1,0 +1,87 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.3.1'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+//apply plugin: 'android'
+apply plugin: 'com.android.dynamic-feature'
+//apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion METADATA_MIN_SDK
+
+      ndk {
+            // abiFilters "arm64-v8a", "x86_64", "armeabi-v7a", "x86"
+        }
+    }
+
+    buildTypes {
+        release {
+//	          shrinkResources true
+//            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard.cfg'
+        }
+    }
+
+  sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+    }
+
+    // set code signing variables in ~/.gradle/gradle.properties
+//    signingConfigs {
+//        release {
+//            storeFile file(ANDROID_KEY_STORE)
+//            storePassword ANDROID_KEY_STORE_PASSWORD
+//            keyAlias ANDROID_KEY_ALIAS
+//            keyPassword ANDROID_KEY_PASSWORD
+//        }
+//    }
+
+    buildTypes {
+        release {
+//            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+  lint {
+    abortOnError false
+  }
+
+  defaultConfig {
+		project.ext.set("archivesBaseName", METADATA_PROJECT)
+	}
+}
+
+dependencies {
+    implementation project(":app")
+    implementation fileTree(dir: 'libs', include: '*.aar')
+//    implementation "com.android.support:support-v4:23.3.+"
+//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+//    implementation project(path: ':imagine-v9')
+}
+

@@ -1,0 +1,31 @@
+<resources>
+  <string name="app_name">ビデオゲーム</string>
+  <string name="title_emu_mame">MAME プラグイン</string>
+  <string name="title_emu_nes">NES プラグイン</string>
+  <string name="title_emu_snes">SNES プラグイン</string>
+  <string name="title_emu_gba">GBA プラグイン</string>
+  <string name="title_emu_gbc">GBC プラグイン</string>
+  <string name="title_emu_md">MD プラグイン</string>
+  <string name="title_emu_neo">NEO プラグイン</string>
+  <string name="title_emu_dolphin">GC/Wii プラグイン</string>
+
+  <string name="storage_rationale">ストレージが必要です</string>
+  <string name="my_scanRomsDialog_selectRom">どのように、私はローカルROMを加えますか？NROMすべてのROMファイルをデバイス上のディレクトリにコピーして選択します。このディレクトリにはサブディレクトリがあります。スキャンが完了したら、あなたのゲームを参照してください。\ n \ nなぜ私のゲームは検出されませんか？\ nゲームが圧縮された場合、それらを圧縮解除してください。これが動作しなければ、ROMを別々のディレクトリに入れてください。</string>
+  <string name="scanRomsDialog_select_file">ファイルを選択</string>
+  <string name="scanRomsDialog_select_folder">フォルダを選択</string>
+
+  <string name="title_emu_n64">N64 プラグイン</string>
+  <string name="title_emu_nds">NDS プラグイン</string>
+  <string name="title_emu_psp">PSP プラグイン</string>
+  <string name="title_emu_psx">PSX プラグイン</string>
+  <string name="title_emu_3ds">3DS プラグイン</string>
+
+  <string name="unzipping">解凍中…</string>
+  <string name="merging">ファイルをマージしています…</string>
+  <string name="game_download_start">ダウンロード開始</string>
+  <string name="game_download_pause">ダウンロードの一時停止</string>
+  <string name="game_download_running">ダウンロード実行中</string>
+  <string name="game_download_complete">ダウンロード完了</string>
+  <string name="game_download_failed">ダウンロードに失敗しました</string>
+  <string name="plugin_empty">プラグインが空です！</string>
+</resources>

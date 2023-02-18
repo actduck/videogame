@@ -1,0 +1,31 @@
+include ':app'
+include ':imagine-v9'
+include ':emu_snes'
+include ':emu_gba'
+include ':emu_nes'
+include ':emu_md'
+include ':emu_neo'
+include ':emu_gbc'
+include ':emu_swan'
+
+include ':emu_mame'
+include ':emu_dolphin'
+include ':emu_n64'
+include ':emu_nds'
+include ':emu_psp'
+include ':emu_psx'
+include ':emu_3ds'
+
+def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
+
+def plugins = new Properties()
+def pluginsFile = new File(flutterProjectRoot.toFile(), '.flutter-plugins')
+if (pluginsFile.exists()) {
+    pluginsFile.withReader('UTF-8') { reader -> plugins.load(reader) }
+}
+
+plugins.each { name, path ->
+    def pluginDirectory = flutterProjectRoot.resolve(path).resolve('android').toFile()
+    include ":$name"
+    project(":$name").projectDir = pluginDirectory
+}

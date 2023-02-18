@@ -1,0 +1,30 @@
+in lowp vec2 texUVOut[5];
+in mediump vec2 texelPosOut;
+
+void main()
+{
+	precision lowp float;
+
+	vec4 E = TEXTURE(TEX, texUVOut[2]);
+	vec4 D = TEXTURE(TEX, texUVOut[1]);
+	vec4 F = TEXTURE(TEX, texUVOut[3]);
+	vec4 H = TEXTURE(TEX, texUVOut[4]);
+	vec4 B = TEXTURE(TEX, texUVOut[0]);
+	vec2 subTexel = fract(texelPosOut);
+	
+	if(subTexel.y >= 0.5)
+	{
+		// adjust to E2 (swap B and H)
+		vec4 tmp = B; B = H; H = tmp;
+	}
+	if(subTexel.x >= 0.5)
+	{
+		// adjust to E1 or E3 (swap D and F)
+		vec4 tmp2 = F; F = D; D = tmp2;
+	}
+
+	if(D == B && B != H && D != F)
+ 		E = D;
+
+	FRAGCOLOR = E;
+}
